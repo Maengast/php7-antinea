@@ -66,7 +66,7 @@ function Results($_ch){
         print "Faux , il vous reste " .($maxTry - $numberOfTry) ." essaie \n";
         $charTry.=$_ch;
     }
-    if ($numberOfTry > $maxTry ){
+    if ($numberOfTry == $maxTry ){
         print "Vous avez perdue\n";
         EndGame();
     }
