@@ -4,7 +4,7 @@ CheckArgv();
 
 function CheckArgv(){
     global $argv;
-    if (count($argv)<4){
+    if (!(count($argv) == 4)){
         return print "Impossible à calculer, entrer une operation tel que : 5 + 3\n ";
     }
     for ($i = 1; $i<count($argv); $i++){
