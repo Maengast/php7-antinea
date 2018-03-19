@@ -28,11 +28,11 @@ function EndGame(){
         $userInput = trim(fgets(STDIN));
         if (is_numeric($userInput)){
             if ($userInput == 1){
-                SetWord();
                 $word = "";
                 $wordHide = "";
                 $numberOfTry = 0;
                 $charTry = "";
+                SetWord();
             }
             else if ($userInput == 0){
                  exit("Fin\n");
