@@ -19,10 +19,6 @@ function CheckArgv(){
     if (!($argv[2] == '*' || $argv[2] == '-' || $argv[2] == '+' || $argv[2] == '/')){
         return print "Entrez un opérateur tel que '*', '/', '-','+'\n";
     }
-    if ($argv[2] == '/' && $argv[3] == 0){
-        return print "Impossible de diviser par zero\n";
-    }
-
     Calculate();
 }
 
@@ -37,6 +33,9 @@ function Calculate(){
             $total =  $argv[1]+$argv[3];
         break;
         case '/':
+            if ($argv[2] == '/' && $argv[3] == 0){
+                return print "Impossible de diviser par zero\n";
+            }
             $total =  $argv[1]/$argv[3];
         break;
         case '*':
