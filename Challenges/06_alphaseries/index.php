@@ -47,7 +47,7 @@
                     <p>Les séries qui sont suivient par le plus de monde.</p>
                     <?php
                         for($i = 0; $i<3; $i++){
-                            CreateIndexCard($popularShows[$i],$i);
+                            CreateIndexCard($popularShows[$i],$i,"popularity");
                         }
                         createIndexButton('popularity');
                     ?>
@@ -59,7 +59,7 @@
                     <p>Les séries qui ont eu les meilleures notes.</p>
                     <?php
                         for($i = 0; $i<3; $i++){
-                            createIndexCard($ratedShows[$i],$i);
+                            createIndexCard($ratedShows[$i],$i,"rating");
                         }
                         createIndexButton('rating');
                     ?>

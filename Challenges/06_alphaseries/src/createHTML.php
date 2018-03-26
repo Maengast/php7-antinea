@@ -119,15 +119,18 @@ function getURL($_pageNb){
 
 //Create HTML by page
 //__________Index________________
-function createIndexCard($_show,$_index){
+function createIndexCard($_show,$_index,$_type){
     //create card for index page
+    $_echo;
+    if ($_type =="rating")$_echo = '<i class="fa fa-star text-info"></i> La série est notée '.$_show["statistics"]["rating"].'/5';
+    else $_echo = number_format($_show["statistics"]["popularity"],0,'',' ').' personnes regardent cette série';
     echo '
     <p>
         <div class="card">
           <img class="card-img-top" src='.$_show["images"]["banner"].'>
           <div class="card-body">
               <h5 class="card-title">#'.($_index+1).'- <a href="/php7-antinea/Challenges/06_alphaseries/serie.php?name='.$_show["slug"].'">'.$_show["name"].'</a></h5>
-              <p class="card-text">'.number_format($_show["statistics"]["popularity"],0,'',' ').' personnes regardent cette série.</p>
+              <p class="card-text">'.$_echo.'</p>
           </div>
         </div>
     </p>';
