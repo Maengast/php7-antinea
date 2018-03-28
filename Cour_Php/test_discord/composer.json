@@ -1,0 +1,12 @@
+{
+    "name": "antinea/test_discord",
+    "authors": [
+        {
+            "name": "Antinea Gontard",
+            "email": "antinea.gontard@ynov.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^6.3"
+    }
+}

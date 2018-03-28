@@ -1,0 +1,60 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.Map{
+    display: grid;
+    grid-template-columns:repeat(<?= $mapWidth?>,minmax(100px, 1fr));
+    grid-template-rows: repeat(<?= $mapHeight?>,10vh);
+}
+
+.Tile{
+    text-align: center;
+    color: white;
+}
+.Tile_Empty{
+    background-color:white;
+}
+.Tile_Enemy{
+    background-color:red;
+}
+
+.Tile_Player{
+    background-color:blue;
+}
+
+.Tile_Shrub{
+    background-color:green;
+}
+
+.Tile_Border{
+    border: 1px solid rgba(0, 0, 0, 0.8);
+}
+
+.Tile_Fit{
+    grid-column: span 1;
+}
+
+.Tile_Title{
+    font-size: 10pt;
+}
+
+.Tile_Text{
+    font-size: 8pt;
+}
+
+.Buttons{
+    display: flex;
+    justify-content: space-around;
+    padding: 2%;
+}
+
+.Button{
+    background-color: blue;
+    padding: 2%;
+}
+.Button_Text{
+    color:white;
+    font-size: 20pt;
+}
