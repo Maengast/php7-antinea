@@ -4,6 +4,12 @@ Hugo Lantillon
 Nous vous présentons notre projet Babyfoot.
 Il donne un classement des joueurs et des match 2vs2 fait au Babyfoot.
 
+Un script de base de donnée:
+Babyfoot.sql
+
+Un CSS
+BabyfootStyle.css
+
 Trois pages :
 Index.php
 MatchRank.php
