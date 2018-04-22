@@ -3,94 +3,231 @@
     margin: 0;
 }
 
+@import url('https://fonts.googleapis.com/css?family=Gugi|Roboto');
+
 .Body{
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+
 }
+
+.Body_Index{
+    background-color: grey;
+    display: flex;
+    flex-flow: column;
+}
+
+.Body_Ranking{
+    background-color: grey;
+}
+
+
+.Overlay_Index::before{
+    content: "";
+    background-image: url('../img/babyfootIndex1.jpg');
+    background-size: cover;
+    z-index: -1;
+    width : 100%;
+    height: 50vh;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    box-shadow: inset 0 0 0 3000px rgba(255,255,255,0.3);
+    filter: blur(5px);
+
+}
+.Overlay_Index{
+    overflow: hidden;
+}
+
+.Overlay_Ranking::before{
+    content: "";
+    background-color: white;
+    background-size: cover;
+    z-index: -1;
+    width : 100%;
+    height: 11vh;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    box-shadow: inset 0 0 0 3000px rgba(255,255,255,0.3);
+    filter: blur(2px);
+
+}
+.Overlay_Ranking{
+    overflow: hidden;
+}
+
+
+
 
 /*---------------Header-----------*/
 .Header{
     padding: 1em;
     display: flex;
+}
+
+.Header_Ranking{
     justify-content: space-between;
-    background-color: green;
-    color: white;
+    color: black;
+}
+
+.Header_Index{
+    flex-flow: column;
+    height: 50vh;
+}
+.Header_Element{
+    flex:1;
 }
 .Header_Title{
-    font-size: 50pt;
+    color: white;
+}
+
+.Header_Description{
+    display: flex;
+    justify-content: space-between;
+    color: white;
 }
 
 .Header_Author{
     align-self: center;
-    font-size: 20pt;
 }
 
+/*---------------Text-----------*/
+.Title{
+    font-family: 'Gugi', cursive;
+    font-size: 50pt;
+}
+.Title_30{
+    font-size: 30pt;
+}
+.Title_20{
+    font-size: 20pt;
+}
+.Title_15{
+    font-size: 15pt;
+}
+
+.Text{
+    font-family: 'Roboto', sans-serif;
+    font-size: 11pt;
+}
+.Text_15{
+    font-size: 15pt;
+}
+
+.Text_20{
+    font-size: 20pt;
+}
 /*---------------Tabs-----------*/
 .Tabs{
     display: flex;
     flex-flow: column;
 }
 .Tabs_Title{
+    background-color: rgba(255,255,255);
     text-align: center;
-    font-size: 30pt;
 }
 .Tabs_Element{
     display: flex;
 }
 .Tabs_Tab{
+    background-color: rgba(255,255,255);
     text-align: center;
-    background-color: blue;
-    color: white;
+    color: black;
+    text-decoration: none;
     flex: 1;
 }
 .Tabs_Tab_Active{
-    background-color: white;
-    color: black;
+    background-color: rgba(255,255,255,0.0);
+    color: White;
+    text-decoration:underline;
 }
 
 /*---------------Rank-----------*/
 .Ranking{
-
+    display: flex;
+    flex-flow: column;
+    margin: 1% 0 1% 0;
 }
 
 .Ranking_Header{
-    display: grid;
     background-color: blue;
-    grid-template-columns: repeat(13, 7.6vw);
-    grid-gap: 1%;
+    margin-bottom: 2%;
 }
+
 .Ranking_Header_Element{
-    border: 1px solid black;
-    font-size: 12pt;
+    background-color: rgba(255,255,255,0.9);
     text-align: center;
+    padding: 1% 0 1% 0;
+    text-decoration: none;
+    grid-row: 1;
+}
+
+.Ranking_Index{
+    display: flex;
+    justify-content: space-between;
+    padding: 2%;
 }
 
 .Ranking_Matches{
     display: grid;
-    grid-template-rows: repeat(3,minmax(100px,1fr));
-    grid-gap: 1% 2%;
+    grid-template-rows: repeat(auto-fill,5vh);
+    grid-row-gap: 5vh;
 }
 
 .Ranking_Element{
     grid-column: span 1;
 }
-.Ranking_Element_Score{
+.Ranking_Element_2{
+    grid-column: span 2;
+}
+.Ranking_Element_3{
     grid-column: span 3;
 }
-.Ranking_Element_Team{
+.Ranking_Element_4{
     grid-column: span 4;
 }
 
 /*---------------Match-----------*/
 .Match{
     display: grid;
-    grid-template-columns: repeat(13, 7.6vw);
-    grid-gap: 1%;
-}
-.Match_Element{
-    border: solid 1px black;
+    grid-gap : 1vw;
+    grid-template-columns: repeat(12, 1fr);
+    background-color: rgba(255,255,255,0.5);
 }
 
-.Match_Team{
+.Match_Button{
+    background-color: rgba(255,255,255,0.0);
+}
+
+.Match_Part_Element{
+    background-color: rgba(255,255,255,0.9);
+    padding: 1% 0 1% 0;
+    text-align: center;
+}
+.Player_Part{
+    grid-row: 1;
+    text-align: center;
+}
+
+.Match_Part{
     display: grid;
+    grid-row: 1;
+}
+
+.Match_Score{
+    text-align: center;
+}
+.Match_Rank{
+    grid-column: span 1;
+    grid-row: 1;
 }
 
 .Match_Team_Element_Title{
@@ -102,12 +239,9 @@
     grid-row: 2;
 }
 
-.Match_Score{
-    display: grid;
-}
 .Match_Score_Element{
-    grid-column: span 1;
     grid-row: 1;
+    grid-column: span 1;
 }
 .Match_Score_Element_Victory{
     background-color: green;
@@ -119,21 +253,81 @@
     background-color: blue;
 }
 
+/*---------------Player--------*/
+.Player_Img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.Player{
+    display: flex;
+    flex-flow: column;
+    text-align: center;
+    margin: 1%;
+}
 /*---------------Button--------*/
 .Button{
-    grid-column: 6/ span 3;
-}
-.Button_Text{
     text-align:center;
-    font-size: 20pt;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
     color: black;
+    padding: 1%;
+    border-radius: 15px;
+    color: white;
 }
-.Button_Add{
-    grid-row: 2;
+.Button_Index{
+    background-color: blue;
+    height: 12%;
 }
-.Button_Delete{
-    grid-row: 2;
-}
-.Button_Match{
+
+.Button_AddForm{
+    grid-column: 6/span 3;
     background-color: green;
+}
+.Button_SendForm{
+    grid-column: span 1;
+    grid-row:2;
+    border-width: 0px;
+    background-color: red;
+}
+
+.Button_SendForm_Player{
+    grid-column: 6/span 3;
+}
+
+.Match_Part_Element_Form{
+    border-style: none;
+    border-width: 0px;
+}
+
+/*---------------Pagination--------*/
+.Pagination{
+    display: flex;
+    width: 50%;
+}
+.PageNumber{
+    border: 1px solid black;
+    flex: 1;
+    text-align: center;
+    color: black;
+    background-color:white;
+    list-style-type: none;
+    font-size: 15pt;
+}
+.PageNumber_Active{
+    text-decoration: underline;
+    color : white;
+    background-color:inherit;
+}
+.PageNumber_Disable{
+    color : white;
+    background-color:inherit;
+}
+
+.PageNumberText{
+    text-decoration: none;
+
 }

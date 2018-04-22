@@ -1,6 +1,8 @@
 <?php
 $projectDirectory = __DIR__;
 require_once($projectDirectory.'/src/functions.php');
+$matches = createMatches();
+
 ?>
 
 <!doctype html>
@@ -11,17 +13,15 @@ require_once($projectDirectory.'/src/functions.php');
 </head>
 
 <body class="Body Body_Ranking">
-    <?=createHeader("Player")?>
+    <?=createHeader("Match")?>
+
     <main class="Ranking">
         <div class="Match Ranking_Header Title_15">
             <p class="Ranking_Element Ranking_Header_Element"> n° </p>
-            <p class="Ranking_Element_3 Ranking_Header_Element"> Avatar </p>
-            <p class="Ranking_Element_4 Ranking_Header_Element"> Pseudo </p>
-            <a class="Ranking_Element Ranking_Header_Element" href="<?=getNewURL("sortType","nb_victory")?>"> Victoire </a>
-            <a class="Ranking_Element Ranking_Header_Element" href="<?=getNewURL("sortType","nb_defeat")?>"> Défaite </a>
-            <a class="Ranking_Element_2 Ranking_Header_Element" href="<?=getNewURL("sortType","ratio")?>"> Ratio </a>
+            <p class="Ranking_Element_4 Ranking_Header_Element"> Equipe n°1 </p>
+            <a class="Ranking_Element_3 Ranking_Header_Element" href="<?=getNewURL("sortType","score")?>"> Score </a>
+            <p class="Ranking_Element_4 Ranking_Header_Element"> Equipe n°2 </p>
         </div>
-
         <div class="Ranking_Matches">
 
             <?php
@@ -30,21 +30,24 @@ require_once($projectDirectory.'/src/functions.php');
                     echo $form->displayForm();
                 }else{
                     echo '<div class="Match Match_Button">
-                        <a class="Button Button_AddForm Text Text_15" href='.getNewURL('form','p').'>Add Player</a>
+                        <a class="Button Button_AddForm Text Text_15" href='.getNewURL('form','m').'>Add match</a>
                     </div>';
                 }
 
                 //display  matches
                 for($i=$start;$i<$end;$i++){
-                    if (isset($players[$i])){
-                        echo $players[$i]->displayPlayer();
+                    if (isset($matches[$i])){
+                        echo $matches[$i]->displayMatch();
                     }
                     else break;
                 }
 
-                if (count($players)>$elementByPage) echo createPagination((int)$currentPage,(int)getPagesNb(count($players)));
+                //pagination
+                if (count($matches)>$elementByPage) echo createPagination((int)$currentPage,(int)getPagesNb(count($matches)));
 
             ?>
         </div>
     </main>
 </body>
+
+</html>

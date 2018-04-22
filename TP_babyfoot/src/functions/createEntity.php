@@ -1,22 +1,17 @@
 <?php
-require_once($projectDirectory.'/src/gameClass.php');
-require_once($projectDirectory.'/src/dataClass.php');
+require_once($projectDirectory.'/src/class.php');
+require_once($projectDirectory.'/src/functions.php');
 
-$con = new Connection();
-
-//Get players data
-$playersData = $con->getPlayersData();
 
 //Create matches objects
 function createMatches(){
-    global $con;
     //Get matches data
-    $matchesData = $con->getMatchesData();
+    $matchesData = getCon()->getMatchesData(getSortDir("sortType"));
     $matches = [];
     //for every match
     foreach ($matchesData as $key =>$match) {
         //Create Teams'match
-        $matches[]= new Match($key,createMatchTeams($match));
+        $matches[]= new Match($key,createMatchTeams($match),$match["ID"]);
     }
     //Return all the matches object
     return $matches;
@@ -39,13 +34,14 @@ function createMatchTeams($_match){
 
 //create players of a team
 function createTeamPlayers($_match,int $_teamIndex){
-    global $playersData;
+    $playersData = getPlayersData();
     $players = [];
     // for each team player
     for ($i=1; $i <3 ; $i++) {
         //get player informations
-        $player = $playersData[$_match["team".$_teamIndex."_player".$i]][0];
-        $players[] = new Player($player["name"],$player["nb_victory"],$player["nb_defeat"]);
+        $playerID = $_match["team".$_teamIndex."_player".$i];
+        $player = $playersData[$playerID][0];
+        $players[] = new PlayerMatch($playerID,$player["name"]);
     }
     //return team players
     return $players;
@@ -53,7 +49,7 @@ function createTeamPlayers($_match,int $_teamIndex){
 
 //Create player for players ranking
 function createPlayers(){
-    global $playersData;
+    $playersData = getPlayersData();
 
     $players = [];
     $rank=1;
@@ -61,14 +57,13 @@ function createPlayers(){
     foreach ($playersData as $key => $player) {
         $player = $player[0];
         //create a player object
-        $players[] = new PlayerRank($rank,$player["name"],$player["nb_victory"],$player["nb_defeat"]);
+        $players[] = new Player($key,$player["avatar"],$rank,$player["name"],$player["nb_victory"],$player["nb_defeat"]);
         $rank++;
     }
 
     return $players;
 
 }
-
 
 
 
